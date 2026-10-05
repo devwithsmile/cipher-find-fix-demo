@@ -2,13 +2,16 @@
   "name": "cipher-find-fix-demo",
   "version": "1.0.0",
   "private": true,
-  "description": "Small Express catalog with two deliberate vulnerabilities for Cipher testing",
+  "description": "Small Express shop with product search and gift-message previews",
   "type": "module",
-  "engines": { "node": ">=24 <27" },
+  "engines": {
+    "node": ">=24 <27"
+  },
   "scripts": {
     "start": "node server.js",
-    "test": "node --test",
-    "verify:issues": "node scripts/verify-issues.js"
+    "test": "node --test"
   },
-  "dependencies": { "express": "5.2.1" }
+  "dependencies": {
+    "express": "5.2.1"
+  }
 }

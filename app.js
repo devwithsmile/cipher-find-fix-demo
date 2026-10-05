@@ -49,7 +49,6 @@ export function createApp() {
   app.get('/products', (req, res) => {
     const search = String(req.query.search ?? '').slice(0, 500);
     try {
-      // Deliberate issue 1: user input changes SQL syntax instead of being bound as data.
       const products = db.prepare(
         `SELECT id, name, price_cents FROM products WHERE published = 1 AND name LIKE '%${search}%'`
       ).all();
@@ -64,7 +63,6 @@ export function createApp() {
 
   app.get('/preview', (req, res) => {
     const message = String(req.query.message ?? 'Enjoy your gift!').slice(0, 2000);
-    // Deliberate issue 2: the message is interpreted as HTML, including script elements.
     res.type('html').send(page('Gift message preview', `<div id="message">${message}</div>`));
   });
 
