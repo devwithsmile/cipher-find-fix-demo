@@ -1,0 +1,14 @@
+{
+  "name": "cipher-find-fix-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Small Express catalog with two deliberate vulnerabilities for Cipher testing",
+  "type": "module",
+  "engines": { "node": ">=24 <27" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test",
+    "verify:issues": "node scripts/verify-issues.js"
+  },
+  "dependencies": { "express": "5.2.1" }
+}
