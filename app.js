@@ -50,8 +50,8 @@ export function createApp() {
     const search = String(req.query.search ?? '').slice(0, 500);
     try {
       const products = db.prepare(
-        `SELECT id, name, price_cents FROM products WHERE published = 1 AND name LIKE '%${search}%'`
-      ).all();
+        `SELECT id, name, price_cents FROM products WHERE published = 1 AND name LIKE ?`
+      ).all(`%${search}%`);
       res.type('html').send(page('Products', `
         <p>Search: ${escapeHtml(search)}</p>
         <ul>${products.map((product) => `<li>${escapeHtml(product.name)} — $${(Number(product.price_cents) / 100).toFixed(2)}</li>`).join('')}</ul>
