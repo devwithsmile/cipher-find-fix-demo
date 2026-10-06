@@ -63,7 +63,7 @@ export function createApp() {
 
   app.get('/preview', (req, res) => {
     const message = String(req.query.message ?? 'Enjoy your gift!').slice(0, 2000);
-    res.type('html').send(page('Gift message preview', `<div id="message">${message}</div>`));
+    res.type('html').send(page('Gift message preview', `<div id="message">${escapeHtml(message)}</div>`));
   });
 
   app.use((_req, res) => res.status(404).type('text').send('Not found.'));
