@@ -32,6 +32,7 @@ export function createApp() {
     res.set('X-Frame-Options', 'DENY');
     res.set('Referrer-Policy', 'no-referrer');
     res.set('Cache-Control', 'no-store');
+    res.set('Content-Security-Policy', "default-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'");
     next();
   });
 
